@@ -1,4 +1,4 @@
-import { users } from "./users";
+import { users, IUser } from "./users";
 
 /**
  * users is an array of user information from your database.
@@ -9,3 +9,13 @@ import { users } from "./users";
  *
  * Ex. ["Hi Jonathan! You have 3 unread messages."]
  */
+let makeGreeting = (user:IUser)=>{
+    if(+user.messages.unread<0){
+        return "Hi "+user.first_name+"!"
+    }
+    else{
+        return "Hi "+user.first_name+"! "+ "You have "+ user.messages.unread + " unread messages."
+    }
+}
+
+let greetings = users.map(makeGreeting)
